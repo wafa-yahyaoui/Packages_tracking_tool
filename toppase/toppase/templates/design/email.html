@@ -1,0 +1,197 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Create Template
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mx-10">
+                    <div class="card-block p-4">
+
+                        <form method="POST" action="">{% csrf_token %}
+                            <fieldset>
+                                <legend>Feel & Cool</legend>
+
+
+                                <div class="form-group row">
+
+                                    <label class="col-2 col-form-label">Font</label>
+                                    <div class="col-3">
+                                        {{ form_config_email.font }}
+                                    </div>
+
+
+                                    <label class="col-2 col-form-label">Alignment</label>
+                                    <div class="col-3">
+                                        {{ form_config_email.allignment }}
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+
+                                    <label class="col-2 col-form-label">Color Menu</label>
+                                    <div class="col-3">
+                                        <div id="cp2" class="input-group colorpicker-component">
+                                            {{ form_config_email.color_menu }}
+                                            <span class="input-group-addon"><i></i></span>
+                                        </div>
+                                        <script>
+                                            $(function () {
+                                                $('#cp2').colorpicker();
+                                            });
+                                        </script>
+                                    </div>
+
+                                    <label class="col-2 col-form-label">Size</label>
+                                    <div class="col-3">
+                                        {{ form_config_email.size }}
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-2 col-form-label">Color call to action</label>
+                                    <div class="col-3">
+                                        <div id="cp3" class="input-group colorpicker-component">
+                                            {{ form_config_email.color_call_to_action }}
+                                            <span class="input-group-addon"><i></i></span>
+                                        </div>
+                                        <script>
+                                            $(function () {
+                                                $('#cp3').colorpicker();
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </fieldset>
+{#                            <div class="row" style="margin-top:5px;">#}
+{#                                <div class="col-9">#}
+{##}
+{#                                </div>#}
+{#                                <!--/.col-->#}
+{#                                <div class="col-3">#}
+                                    {#								<button type="submit" class="btn btn-link">Send Test</button>#}
+{#                                    <button type="submit" class="btn btn-success">Save</button>#}
+{##}
+{#                                </div>#}
+{#                                <!--/.col-->#}
+{#                            </div>#}
+{#                        </form>#}
+{#                        <form method="POST" action="" id="email_form">{% csrf_token %}#}
+                            <fieldset>
+                                <legend>Email</legend>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <ul class="list-group" style="margin-top:1rem">
+
+                                                <li class="list-group-item list-group-item-action active"
+                                                    style="padding:1rem 1.5rem" onclick="openStatus(event,'RTG')">Ready
+                                                    togo
+                                                </li>
+                                                <li class="list-group-item list-group-item-action"
+                                                    style="padding:1rem 1.5rem" onclick="openStatus(event,'OFD')">out
+                                                    for
+                                                    delivery
+                                                </li>
+                                                <li class="list-group-item list-group-item-action"
+                                                    style="padding:1rem 1.5rem" onclick="openStatus(event,'IT')">in
+                                                    transit
+                                                </li>
+                                                <li class="list-group-item list-group-item-action"
+                                                    style="padding:1rem 1.5rem" onclick="openStatus(event,'DL')">
+                                                    Delivered
+                                                </li>
+                                                <li class="list-group-item list-group-item-action"
+                                                    style="padding:1rem 1.5rem" onclick="openStatus(event,'FA')">Failed
+                                                    Attempt
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+
+                                        <div class="col content_email" id="RTG" style="display:block">
+                                            {% include 'design/status/ready_to_go.html' %}
+                                        </div>
+                                        <div class="col content_email" name="IT" id="IT" style="display: none">
+                                            {% include 'design/status/in_transit.html' %}
+                                        </div>
+                                        <div class="col content_email" id="DL" style="display: none">
+                                            {% include 'design/status/delivered.html' %}
+                                        </div>
+                                        <div class="col content_email" id="OFD" style="display: none">
+                                            {% include 'design/status/out_for_delivery.html' %}
+                                        </div>
+                                        <div class="col content_email" id="FA" style="display: none">
+                                            {% include 'design/status/failed_attempt.html' %}
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <div class="float-left"><strong>Previous</strong></div>
+                                                    <div class="float-right">
+                                                        <i class="icon-size-fullscreen" style="margin: 5px;"></i>
+                                                        <i class="icon-screen-desktop" style="margin: 5px;"></i>
+                                                        <i class="icon-screen-smartphone" style="margin: 5px;"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="card-block" style="height: 320px;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                            <div class="row" style="margin-top:5px;">
+                                <div class="col-9">
+                                </div>
+                                <div class="col-3">
+                                    <button type="submit" class="btn btn-success status_d">Save</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function openStatus(evt, status) {
+            $("form").submit(function () {
+                $(this).children('#content_email').remove();
+            });
+            {#            $(".IT :input").attr("disabled", true);#}
+            {#            $(".IT").validate(#}
+            {#                { ignore: [] }#}
+            {#            );#}
+            {#            document.getElementById("email_form").reset();#}
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("content_email");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("list-group-item");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(status).style.display = "block";
+            evt.currentTarget.className += " active";
+            {#            document.getElementById(status).getElementsByClassName("status_d")[0].value="RR";#}
+            {#        $('.IT').find('input, textarea, button, select').attr('name','name');#}
+
+        }
+    </script>
+{% endblock %}

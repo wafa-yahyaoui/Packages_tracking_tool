@@ -1,0 +1,129 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block body_classes %}
+    class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden"
+{% endblock %}
+{% block main %}
+
+  <main class="main">
+
+
+        <h3 style="margin:1rem;margin-left:3rem;">
+            Tracking Performance <small>In last 28 days</small>
+        </h3>
+        <div class="row justify-content-center">
+            <!--/.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card">
+                    <div class="card-block">
+                        <div class="h4 m-0">Package in Network</div>
+                        <div>150 000</div>
+                        <div class="progress progress-xs my-3">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card">
+                    <div class="card-block">
+                        <div class="h4 m-0">Package Delivered</div>
+                        <div>142 020</div>
+                        <div class="progress progress-xs my-3">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small class="text-muted">evolution in last 30.</small>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+            <div class="col-sm-6 col-lg-3">
+                <div class="card">
+                    <div class="card-block">
+                        <div class="h4 m-0">Package Exception</div>
+                        <div>120 </div>
+                        <div class="progress progress-xs my-3">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Interest By Client</strong>
+                    </div>
+                    <div class="card-block"
+                         style="padding-left: 0px; padding-bottom: 0px; padding-right: 0px; padding-top: 0px;">
+                        <table class="table table-responsive table-hover table-outline mb-0">
+                            <thead class="thead-default">
+                            <tr>
+
+                                <th class="text-center">Courrier</th>
+                                <th class="text-center">Number</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+
+                                <td class="text-center">UPS</td>
+                                <td class="text-center">20000</td>
+                            </tr>
+                            <tr>
+
+                                <td class="text-center">Fedex</td>
+                                <td class="text-center">10000</td>
+                            </tr>
+                            <tr>
+
+                                <td class="text-center">La Poste</td>
+                                <td class="text-center">3000</td>
+                            </tr>
+
+                            <tr>
+
+                                <td class="text-center">Collissmo</td>
+                                <td class="text-center">50000</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-5">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="float-left"><a href="loyalty.html"><strong>Engagement page</strong></a></div>
+                        <div class="float-right">
+                            <i class="icon-size-fullscreen" style="margin: 5px;"></i>
+                            <i class="icon-screen-desktop" style="margin: 5px;"></i>
+                            <i class="icon-screen-smartphone" style="margin: 5px;"></i>
+                        </div>
+                    </div>
+                    <div class="card-block" style="height: 340px;">
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </main>
+{% endblock %}
+
+{% block extra_style_links %}
+    <script src='{% static "JavaScript/dashboard.js" %}'></script>
+{% endblock %}

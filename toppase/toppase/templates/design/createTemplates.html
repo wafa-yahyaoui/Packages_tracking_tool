@@ -1,0 +1,99 @@
+{% extends 'design/base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load bootstrap3 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_javascript %}
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+
+{% block title %} {% trans "Templates' Configuration" %}{% endblock %}
+
+{% block menu1 %}
+    <li class="current_page_item"><a href="{% url "Design:create_templates" %}"
+                                     title="">{% trans "Templates' Configuration" %}</a></li> {% endblock %}
+
+
+{% block content %}
+
+    <div class="tab">
+        <button class="tablinks active" onclick="openStatus('IT')">In transit</button>
+        <button class="tablinks" onclick="openStatus('DL')">Delivered</button>
+        <button class="tablinks" onclick="openStatus('EX')">Exception</button>
+    </div>
+
+    <div id="IT" class="tabcontent" style="display:block">
+
+    </div>
+    <div id="DL" class="tabcontent">
+    </div>
+
+    <div id="EX" class="tabcontent">
+    </div>
+
+    <div id="selected-tab">
+        <div id='editArea'>
+
+            <div id="featured">
+                <div id="editAreaTitle" class="editAreaChild">
+                    <h1> {% trans "Personalize Your Template" %} </h1>
+                </div>
+
+                <center>
+                    <div id="loadingDiv" class="loader"></div>
+                </center>
+
+                {% if saved %} <h2> {% trans "Your template has been saved" %} </h2>{% endif %}
+
+                <form class="bootstrap-iso" id="template_form" method="post" role="form"
+                      enctype="multipart/form-data"
+                      action="{% url 'Design:create_templates' %}">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+{#                    <input type="hidden" name="statusTemplateConf" id="status" value="DL">#}
+                    {% buttons %}
+                        <input type="submit" class="btn btn-primary" value="Save Template"/>
+                    {% endbuttons %}
+
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+        <div id='previewArea'>
+
+
+            <div id="previewAreaTitle">
+                <h1>  {% trans "Preview Modifications" %} </h1>
+
+                <button id="Browser" class="buttonS button2"> {% trans "Browser" %}</button>
+                <button id="Phone" class="buttonS button2">{% trans "Phone" %}</button>
+
+
+            </div>
+
+            <div id="Content">
+
+                <div id="WhereToInclude"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/createTemplate.js" %}"></script>
+    <script>
+        var currentUserId = {{ request.user.id }};
+        var my_server_url = '{{ MY_SERVER_URL }}';
+
+    </script>
+
+
+{% endblock %}

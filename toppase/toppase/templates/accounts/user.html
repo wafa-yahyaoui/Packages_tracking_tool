@@ -1,0 +1,139 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    My Profile
+{% endblock %}
+{% block style %}
+
+
+{% endblock %}
+
+{% block body_classes %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mx-10">
+                    <div class="card-block p-4">
+
+
+			<form action="" method="post">
+                {% csrf_token %}
+			 <fieldset>
+			<legend>User Settings</legend>
+
+ 			 <div class="form-group">
+                  {% for field in form_my_profile %}
+
+				<div class="form-group row">
+				  <label for="example-text-input" class="col-3 col-form-label">{{ field.label_tag }}</label>
+				  <div class="col-6">
+
+{{ field }}
+
+
+      {% for error in field.errors %}
+                    <div class="alert alert-danger" role="alert">
+  <strong>{{ error }}</strong>
+</div>
+    {% endfor %}
+
+
+
+				  </div>
+
+
+				</div>
+                 {% endfor %}
+
+		</div>
+		</fieldset>
+
+
+			<fieldset>
+			<legend>Change Password</legend>
+ 			 <div class="form-group">
+
+				<div class="form-group row">
+				  <label for="id_old_password" class="col-3 col-form-label">Old Password&nbsp;:</label>
+				  <div class="col-6">
+                      <input type="password" class="form-control" name="old_password" autofocus=""  id="id_old_password">
+
+				  </div>
+
+
+{% if form_change_password.old_password.errors %}
+      {% for error in form_change_password.old_password.errors %}
+                    <div class="alert alert-danger" role="alert">
+  <strong>{{ error }}</strong>
+</div>
+    {% endfor %}
+{% endif %}
+
+
+
+
+				</div>
+                 <div class="form-group row">
+				  <label for="id_new_password1" class="col-3 col-form-label">New Password&nbsp;:</label>
+				  <div class="col-6">
+<input type="password" class="form-control" name="new_password1" id="id_new_password1">
+				  </div>
+                     {% if form_change_password.new_password1.errors %}
+      {% for error in form_change_password.new_password1.errors %}
+                    <div class="alert alert-danger" role="alert">
+  <strong>{{ error }}</strong>
+</div>
+    {% endfor %}
+{% endif %}
+				</div>
+
+                 <div class="form-group row">
+				  <label for="id_new_password2" class="col-3 col-form-label">Confirm New Password&nbsp;:</label>
+				  <div class="col-6">
+                      <input type="password" class="form-control" name="new_password2" id="id_new_password2">
+
+				  </div>
+                   {% if form_change_password.new_password2.errors %}
+      {% for error in form_change_password.new_password2.errors %}
+                    <div class="alert alert-danger" role="alert">
+  <strong>{{ error }}</strong>
+</div>
+    {% endfor %}
+{% endif %}
+				</div>
+
+		</div>
+		</fieldset>
+
+
+
+
+<center>
+<button type="submit" class="btn btn-success">Save Changes</button>
+</center>
+
+
+		</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+{% block script %}
+
+
+{% endblock %}

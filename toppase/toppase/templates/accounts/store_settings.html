@@ -1,0 +1,60 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    My Profile
+{% endblock %}
+
+{% block body_classes %}
+    class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden"
+{% endblock %}
+
+{% block main %}
+
+
+
+    <div class="main">
+
+        {% include 'messages_notifications.html' %}
+
+        <h3 style="margin:1rem;margin-left:3rem;">
+            Account Settings
+        </h3>
+
+
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+                <a {% block store-class %}{% endblock %}  {% block store-url %}{% endblock %}>Store</a>
+            </li>
+            <li class="nav-item">
+                <a   {% block design-class %}{% endblock %}
+                {% block design-url %}{% endblock %}>Design</a>
+            </li>
+        <li class="nav-item">
+                <a   {% block courier-class %}{% endblock %}
+                {% block courier-url %}{% endblock %}>Courier</a>
+            </li>
+        </ul>
+
+        <div  class="tabcontent">
+            {% block template_to_include %}
+                {% endblock %}
+
+        </div>
+
+
+
+    </div>
+
+{% endblock %}
+
+{% block extra_script_links %}
+    <script src='{% static "JavaScript/bootstrap-colorpicker.min.js" %}'></script>
+    <script src='{% static "JavaScript/store.js" %}'></script>
+
+
+{% endblock %}
+
+{% block extra_style_links %}
+<link rel="stylesheet" href='{% static "css/bootstrap-colorpicker.min.css" %}'>
+{% endblock %}

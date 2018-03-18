@@ -1,0 +1,61 @@
+{% extends 'design/base.html' %}
+
+
+    {% load static %}
+    {% load i18n %}
+    {% load bootstrap3 %}
+    {# Load CSS and JavaScript #}
+    {% bootstrap_javascript %}
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+{% block title %} {% trans "E-mails' Sending" %}{% endblock %}
+{% block menu2 %}
+    <li class="current_page_item" xmlns="http://www.w3.org/1999/html"><a href="{% url "Design:send_mails" %}" accesskey="1" title="">{% trans "E-mails' Sending" %}</a></li>
+{% endblock %}
+
+{% block content %}
+
+		<div id="welcome">
+				<h1>{% trans "Send E-Mails" %}</h1>
+				<span class="byline">{% trans "Import Your receivers (.csv file) & send your e-mails" %}</span>
+		</div>
+
+		<div id="featured">
+
+ <h2 id="sendTest_h2"> </h2>
+
+        <center>
+        <div id="loadingDiv" class="loader"></div>
+        </center>
+
+<form class="bootstrap-iso" action="{% url "Design:send_mails" %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+{% bootstrap_form form %}
+
+
+    {% buttons %}
+    <button type="submit" class="btn btn-primary">
+       {% trans "Send" %}
+    </button>
+{% endbuttons %}
+
+</form>
+
+    <button id="sendTest">
+     {% trans "Send Test" %} </button>
+
+</div>
+
+    <script>
+        var my_server_url = '{{ MY_SERVER_URL }}';
+</script>
+
+ <script type="text/javascript"  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+     <script src="{% static "js/sendMails.js"  %}"></script>
+
+
+
+    {% endblock %}
+

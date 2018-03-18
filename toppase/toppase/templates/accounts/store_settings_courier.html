@@ -1,0 +1,23 @@
+{% extends "accounts/store_settings.html" %}
+{% load staticfiles %}
+{% block template_to_include %}
+    {% include "accounts/courier.html" %}
+{% endblock %}
+{% block store-class %}
+    class="nav-link"
+{% endblock %}
+{% block store-url %}
+    href='{% url "store-settings" request.user.get_store.pk %}'
+{% endblock %}
+{% block design-class %}
+    class="nav-link"
+{% endblock %}
+{% block design-url %}
+    href='{% url "store-settings-design" request.user.get_store.pk %}'
+{% endblock %}
+{% block courier-class %}
+    class="nav-link active"
+{% endblock %}
+{% block courier-url %}
+    href="#"
+{% endblock %}

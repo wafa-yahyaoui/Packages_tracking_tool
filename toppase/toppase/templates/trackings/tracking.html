@@ -1,0 +1,283 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Trackings
+{% endblock %}
+
+{% block extra_style_links %}
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+</head>
+
+
+{% endblock %}
+
+{% block body_classes %}class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden"{% endblock %}
+
+{% block main %}
+
+    <main class="main">
+
+
+        <h3 style="margin:1rem;margin-left:3rem;">
+            All Shipments
+        </h3>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="card mx-10">
+                        <div class="card-block p-4">
+                            <div class="row">
+                                <div class="alert_zone">
+                                </div>
+                                <div class="col-8"></div>
+                                <!--/.col-->
+                                <div class="col-4">
+
+                                    <button type="button"
+                                            class="btn btn-secondary"
+                                            data-toggle="modal"
+                                            data-target="#AddPickupModal"
+                                            style="margin: 15px;">Add Pickup
+                                    </button>
+
+                                    <button type="button"
+                                            class="btn btn-secondary"
+                                            data-toggle="modal"
+                                            data-target="#UploadCSVModal"
+                                            style="margin-top:3px;">
+                                        CSV Import
+                                    </button>
+
+
+
+                                </div>
+                                <!--/.col-->
+                            </div>
+                            <br>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <ul class="nav navbar-nav d-md-down-none">
+
+                                        <li class="nav-item px-3">
+                                            <form>
+
+                                                <input placeholder="Search"
+                                                       type="search"
+                                                       class="form-control"
+                                                       style="border-radius:25px;">
+                                            </form>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <!--/.col-->
+
+                                <div class="col-1.5">
+                                    <label class="col-form-label">Filter
+                                                                  by:</label>
+                                </div>
+
+
+                                <div class="col-3">
+                                    <div class="input-group mb-3">
+						 <span class="input-group-addon"><i
+                                 class="icon-calendar"></i>
+								    </span>
+                                        <input type="text" id="datepicker"
+                                               class="form-control"
+                                               placeholder="date"/>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-2">
+                                    <select class="form-control">
+                                        <option value="" disabled selected>
+                                            Courrier
+                                        </option>
+                                        <option>UPS</option>
+                                        <option>Chronopost</option>
+                                        <option>Colissimo</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-2">
+                                    <select class="form-control">
+                                        <option value="" disabled selected>
+                                            Status
+                                        </option>
+                                        <option>delivered</option>
+                                        <option>exception</option>
+                                        <option>in transit</option>
+                                        <option>failed</option>
+                                    </select>
+                                </div>
+
+                                <!--/.col-->
+                            </div>
+                            <br>
+
+                            <div class="row">
+                                <table class="table table-hover">
+                                    <thead class="thead-inverse">
+                                    <tr>
+                                        <th>Order</th>
+                                        <th>Tracking ID</th>
+                                        <th>Client Email</th>
+                                        <th>Courier</th>
+                                        <th>Status</th>
+                                        <th>Destination</th>
+                                        <th>Date Estimation</th>
+                                        <th>Reason</th>
+                                        <th>Comment</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="table_tracking_body">
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <nav aria-label="">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item"><a class="page-link"
+                                                             href="#">Previous</a>
+                                    </li>
+                                    <li class="page-item"><a class="page-link"
+                                                             href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link"
+                                                             href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link"
+                                                             href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link"
+                                                             href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- AddPickupModal --------------------------------- -->
+
+
+
+
+            <div class="bootstrap-iso">
+                <div class="modal fade" id="AddPickupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg " role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add Pickup  <span class="platform_name"></span></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="CloseAddPickupModal">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body modal-custom">
+                                <div id="add_pickup_error"></div>
+                                <div class="container-fluid">
+
+                                    {% include "trackings/add_pickup.html" %}
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="CloseAddPickupModal">Close</button>
+                                    <button  type="button" class="btn btn-primary" onclick="FormAddPickupSubmit()">Add Pickup</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </div>
+
+
+
+
+            <!-- ------------------------------------------------- -->
+
+
+
+            <!-- Upload CSV Modal--------------------------------- -->
+
+
+
+
+            <div class="bootstrap-iso">
+                <div class="modal fade" id="UploadCSVModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg " role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add Pickup  <span class="platform_name"></span></h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body modal-custom">
+                                <div id="upload_csv_error"></div>
+                                <div class="container-fluid">
+
+                                    {% include "trackings/upload_csv.html" %}
+
+
+                                </div>
+                            </div>
+                           <div class="modal-footer">
+                                <form>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="CloseUploadCSVModal">Close</button>
+                                    <button  type="button" class="btn btn-primary" onclick="FormUploadCSVSubmit()" >Upload CSV</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+            </div>
+
+
+
+
+            <!-- ------------------------------------------------- -->
+
+
+  <form method="PUT" action="#" name="mark_delivered" id="mark_as_delivered">
+            {% csrf_token %}
+
+        </form>
+
+
+        </div>
+
+    </main>
+
+
+
+{% endblock %}
+
+{% block extra_script_links %}
+
+    <script src='{% static "JavaScript/tracking.js" %}'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src='{% static "JavaScript/jquery.dataTables.min.js" %}'></script>
+    <script src='{% static "JavaScript/jquery.csv.js" %}'></script>
+{#   ADDED TO Make Action Working #}
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+{% endblock %}

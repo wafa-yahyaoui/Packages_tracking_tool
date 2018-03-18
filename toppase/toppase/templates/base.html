@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="...">
+    <meta name="author" content="....">
+    <meta name="keyword" content="....">
+
+    <title>{% block title %}{% endblock %} | Toppase.com</title>
+    {% block meta %}{% endblock %}
+
+    {% block style %}{% endblock %}
+
+{% block extra_style %}
+{% endblock %}
+
+
+</head>
+<body {% block body_classes %}{% endblock %}>
+{% block content %}
+{% endblock %}
+
+
+
+{% block script %}{% endblock %}
+
+{% block extra_style_links %}
+{% endblock %}
+{% block extra_script_links %}
+{% endblock %}
+</body>
+</html>

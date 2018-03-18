@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block style %}
+    <!-- Icons -->
+    <link href='{% static "css/simple-line-icons.css" %}' rel="stylesheet">
+
+    <!-- Main styles for this application -->
+    <link href='{% static "css/style.css" %}' rel="stylesheet">
+
+    <link rel="stylesheet" href='{% static "css/bootstrap-iso.css" %}'>
+
+{% endblock %}
+
+
+
+{% block body_classes %}
+    class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden"
+{% endblock %}
+
+{% block content %}
+
+    <!-- top_menu -->
+    {% include "menu/top_menu.html" %}
+
+    <!-- end top_menu -->
+
+    <div class="app-body">
+
+        <!-- sidebar -->
+{% include "menu/sidebar.html" %}
+
+        <!-- end sidebar -->
+
+        {% block main %}
+        <!-- Main content -->
+        {% endblock %}
+
+    </div>
+
+    {% block extra_script %}
+
+    {% endblock %}
+
+{% endblock %}
+
+
+
+
+
+{% block script %}
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src='{% static "JavaScript/bower_components/jquery/dist/jquery.min.js" %}'></script>
+    <script src='{% static "JavaScript/bower_components/tether/dist/js/tether.min.js" %}'></script>
+    <script src='{% static "JavaScript/bower_components/bootstrap/dist/js/bootstrap.min.js" %}'></script>
+    <script src='{% static "JavaScript/bower_components/pace/pace.min.js" %}'></script>
+
+
+    <!-- Plugins and scripts required by all views -->
+    <script src='{% static "JavaScript/bower_components/chart.js/dist/Chart.min.js" %}'></script>
+
+
+    <!-- GenesisUI main scripts -->
+
+    <script src='{% static "JavaScript/app.js" %}'></script>
+
+
+    <!-- Plugins and scripts required by this views -->
+
+    <!-- Custom scripts required by this view -->
+    <script src='{% static "JavaScript/views/main.js" %}'></script>
+    <script src='{% static "JavaScript/add_header_sidebar.js" %}'></script>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+

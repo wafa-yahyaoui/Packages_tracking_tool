@@ -1,0 +1,76 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Create Template
+{% endblock %}
+{% block content %}
+
+
+
+
+
+<div class="container">
+
+<div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mx-10">
+                    <div class="card-block p-4">
+
+
+
+<form>
+			 <fieldset>
+			<legend>Trigger</legend>
+			<p style="margin-bottom:30px;">Send your customers email when the status</p>
+
+
+				<div class="form-check">
+				  <label class="form-check-label">
+				    <input class="form-check-input" type="checkbox"> Delivered
+				  </label>
+				</div>
+
+				<div class="form-check form-check">
+				  <label class="form-check-label">
+				    <input class="form-check-input" type="checkbox"> out for delivery
+				  </label>
+				</div>
+				<div class="form-check form-check">
+				  <label class="form-check-label">
+				    <input class="form-check-input" type="checkbox"> Exception
+				  </label>
+				</div>
+				<div class="form-check form-check">
+				  <label class="form-check-label">
+				    <input class="form-check-input" type="checkbox"> FailedAttempt
+				  </label>
+				</div>
+
+
+
+
+
+		</fieldset>
+		</form>
+
+
+<center>
+<button type="button" class="btn btn-success">Submit Vote</button>
+</center>
+
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

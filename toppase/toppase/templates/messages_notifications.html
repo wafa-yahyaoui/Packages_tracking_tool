@@ -1,0 +1,48 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block style %}
+{% endblock %}
+
+{% block body_classes %}
+
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+{% if message.tags == "success" %}
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>SUCCESS !</strong> {{ message|safe }}
+            </div>
+{% endif %}
+
+            {% if message.tags == "error" %}
+            <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>ERROR !</strong> {{ message|safe }}
+            </div>
+{% endif %}
+        {% endfor %}
+    {% endif %}
+
+
+
+    {% comment %}
+        None form Error
+    {% endcomment %}
+
+    {% for error in form.non_field_errors %}
+        <div class="alert media fade in alert-danger">
+            <p>
+                {{ error }}
+            </p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+{% block extra_script %}
+
+{% endblock %}

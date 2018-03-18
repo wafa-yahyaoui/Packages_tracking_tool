@@ -1,0 +1,56 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Store
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mx-10">
+                    <div class="card-block p-4">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <fieldset>
+                                <legend>Courrier</legend>
+                                <p style="margin-bottom:30px;">Select the courrier
+                                                               you often use for more accurate
+                                                               auto-detection</p>
+                                <div class="row" style="margin-left: 25px;">
+                                    <div class="col-4">
+                                        <div class="form-check">
+
+
+                                            {{ form_courier.couriers }}
+
+                                        </div>
+
+                                        <br>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                            <button type="submit"
+                                    class="btn btn-success float-md-right">Save
+                                                                           Changes
+                            </button>
+                        </form>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

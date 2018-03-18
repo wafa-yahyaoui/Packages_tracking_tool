@@ -1,0 +1,49 @@
+{% load staticfiles %}
+<div id="sidebar">
+            <nav class="sidebar-nav open" id="docsNavbarContent">
+
+    <ul class="nav">
+        <li class="divider"></li>
+        <li class="divider"></li>
+        <li class="nav-item">
+            <a id="dashboard-link" class="nav-link" href='{% url "dashboard" %}'><i class="icon-speedometer"></i>Dashboard </a>
+        </li>
+
+        <li class="divider"></li>
+        <li class="nav-item">
+            <a id="tracking-link" class="nav-link" href='{% url "tracking" request.user.get_store.pk %}'><i class="icon-location-pin"></i>Tracking </a>
+        </li>
+        <li class="divider"></li>
+        <li class="nav-item">
+            <a id="loyalty-link" class="nav-link" href='{% url "create_templates_email" %}'><i class="icon-heart"></i>Loyalty &amp; Engagement</a>
+        </li>
+        <li class="divider"></li>
+        <li class="nav-item">
+            <a id="adverts-link" class="nav-link" href="#"><i class="icon-magnet"></i>Viral Adverts <span class="badge badge-pill badge-danger">soon</span></a>
+        </li>
+        <li class="divider"></li>
+        <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-graph"></i> Statistics</a>
+            <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="icon-compass"></i> Tracking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="icon-anchor"></i> Engagement</a>
+                </li>
+            </ul>
+        </li>
+        <li class="divider"></li>
+        <li class="nav-item">
+            <a id="integration-link" class="nav-link" href="#"><i class="icon-puzzle"></i>Integration</a>
+        </li>
+        <li class="divider"></li>
+        <li class="nav-item">
+            <a id="setting-link" class="nav-link"  href='{% url "store-settings" request.user.get_store.pk %}'><i class="icon-settings"></i>Setting Store</a>
+        </li>
+
+
+
+    </ul>
+</nav>
+        </div>

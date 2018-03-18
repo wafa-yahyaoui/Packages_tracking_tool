@@ -1,0 +1,172 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Create Template
+{% endblock %}
+{% block content %}
+
+<div class="container">
+
+	<div class="row justify-content-center">
+		<div class="col-md-10">
+			<div class="card mx-10">
+				<div class="card-block p-4">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<form>
+									<fieldset>
+										<legend>Feel & Cool</legend>
+
+
+										<div class="form-group row">
+
+											<label class="col-4 col-form-label">Font</label>
+											<div class="col-8">
+                                                {{ form.l_font }}
+											</div>
+										</div>
+
+										<div class="form-group row">
+
+											<label class="col-4 col-form-label">Alignment</label>
+											<div class="col-8">
+												{{ form.l_allignment }}
+											</div>
+
+										</div>
+
+
+
+
+
+										<div class="form-group row">
+											<label class="col-4 col-form-label">Size</label>
+											<div class="col-8">
+                                                {{ form.l_size }}
+											</div>
+										</div>
+
+
+										<div class="form-group row">
+
+											<label class="col-4 col-form-label">Color Menu</label>
+											<div class="col-8">
+												<div id="cp2" class="input-group colorpicker-component">
+													{{ form.l_color_menu }}
+													<span class="input-group-addon"><i></i></span>
+												</div>
+												<script>
+                                                    $(function() {
+                                                        $('#cp2').colorpicker();
+                                                    });
+												</script>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-4 col-form-label">Color call to action</label>
+											<div class="col-8">
+												<div id="cp3" class="input-group colorpicker-component">
+													{{ form.l_color_call_to_action }}
+													<span class="input-group-addon"><i></i></span>
+												</div>
+												<script>
+                                                    $(function() {
+                                                        $('#cp3').colorpicker();
+                                                    });
+												</script>
+
+											</div>
+										</div>
+
+										<div class="form-group row">
+											<label class="col-4 col-form-label">Background Image</label>
+											<div class="col-8">
+												<label class="custom-file">
+													<input type="file" id="background_image_file" class="custom-file-input">
+													<span id="background_name" class="custom-file-control"></span>
+												</label>
+											</div>
+										</div>
+
+
+									</fieldset>
+
+									<fieldset>
+										<legend>Adverts</legend>
+
+										<div class="adverts"></div>
+										<div class="form-group row adverts">
+											<label class="col-2 col-form-label">Ad image</label>
+											<div class="col-4.5">
+												<label for="file-upload" class="custom-file-upload">
+													Upload Image
+												</label>
+												<input id="file-upload" type="file" style="display:none;"/>
+											</div>
+
+											<label class="col-1 col-form-label">URL</label>
+											<div class="col-5">
+												<input class="form-control" type="url">
+											</div>
+
+											<div class="col-0.5">
+												<button type="button" class="close" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+
+										</div>
+										<button id="add_adverts" type="button" class="btn btn-link px-0">add Adverts</button>
+									</fieldset>
+
+									<fieldset>
+										<legend>Promote Product</legend>
+										<label class="switch switch-default switch-pill switch-primary-outline-alt">
+											<input type="checkbox" class="switch-input" checked>
+											<span class="switch-label"></span>
+											<span class="switch-handle"></span>
+										</label>
+									</fieldset>
+
+									<fieldset>
+										<legend>Help</legend>
+										<div class="form-group row">
+											<label class="col-2 col-form-label">URL</label>
+											<div class="col-10">
+                                                {{ form.l_help_url }}
+                                            </div>
+										</div>
+									</fieldset>
+
+									<button type="submit" class="btn btn-success">Save</button>
+								</form>
+							</div>
+							<div class="col-sm-6">
+								<div class="card">
+									<div class="card-header">
+										<div class="float-left"><strong>Previous</strong></div>
+										<div class="float-right">
+											<i class="icon-size-fullscreen" style="margin: 5px;"></i>
+											<i class="icon-screen-desktop" style="margin: 5px;"></i>
+											<i class="icon-screen-smartphone" style="margin: 5px;"></i>
+										</div>
+									</div>
+									<div class="card-block" style="height: 640px;">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+{% endblock %}

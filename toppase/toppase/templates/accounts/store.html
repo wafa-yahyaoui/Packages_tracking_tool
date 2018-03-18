@@ -1,0 +1,224 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Store
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mx-10">
+                    <div class="card-block p-4">
+
+
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <fieldset>
+                                <legend>Store Settings</legend>
+                                <div class="form-group">
+
+                                    <div class="form-group row">
+                                        <label for="example-text-input"
+                                               class="col-3 col-form-label">Store
+                                                                            Name</label>
+                                        <div class="col-6">
+                                            {{ form_store.company_name }}
+                                        </div>
+                                        {% if form_store.company_name %}
+                                            {% for error in form_store.company_name.errors %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="example-text-input"
+                                               class="col-3 col-form-label">Store
+                                                                            URL</label>
+                                        <div class="col-6">
+                                            {{ form_store.url }}
+                                        </div>
+                                        {% if form_store.url.errors %}
+                                            {% for error in form_store.url.errors %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="example-email-input"
+                                               class="col-3 col-form-label">Tracking
+                                                                            URL</label>
+                                        <div class="col-6">
+                                            {{ form_store.tracking_url }}
+                                        </div>
+                                        {% if form_store.tracking_url.errors %}
+                                            {% for error in form_store.tracking_url.errors %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="example-text-input"
+                                               class="col-3 col-form-label">Language</label>
+                                        <div class="col-6">
+                                            {{ form_store.language }}
+                                        </div>
+
+                                        {% if form_store.language.errors %}
+                                            {% for error in form_store.language.errors %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="example-text-input"
+                                               class="col-3 col-form-label">Category</label>
+                                        <div class="col-6">
+
+                                            {{ form_store.category }}
+                                        </div>
+
+                                        {% if form_store.category.errors %}
+                                            {% for error in form_store.category.errors %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="example-text-input"
+                                               class="col-3 col-form-label">Shipment Address</label>
+                                        <div class="col-6">
+                                            {{ form_store.address_line }}
+                                        </div>
+                                        {% if form_store.address_line.errors %}
+                                            {% for error in form_store.address_line.errors %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="example-text-input"
+                                               class="col-3 col-form-label">City</label>
+                                        <div class="col-6">
+                                            {{ form_store.city }}
+                                        </div>
+                                        {% if form_store.city.errors %}
+                                            {% for error in form_store.city.errors %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="example-text-input"
+                                               class="col-3 col-form-label">Zip Code</label>
+                                        <div class="col-6">
+                                            {{ form_store.zip_code }}
+                                        </div>
+
+                                        {% if form_store.zip_code.errors %}
+                                            {% for error in form_store.zip_code.errors %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="example-text-input"
+                                               class="col-3 col-form-label">Country</label>
+                                        <div class="col-6">
+                                            {{ form_store.country }}
+                                        </div>
+                                    </div>
+
+                                    {% if form_store.country.errors %}
+                                        {% for error in form_store.country.errors %}
+                                            <div class="alert alert-danger" role="alert">
+                                                <strong>{{ error }}</strong>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>API Credentials</legend>
+                                <div class="form-group">
+
+                                    <div class="form-group row">
+                                        <label class="col-3 col-form-label">API
+                                                                            KEYS</label>
+                                        <div class="col-6">
+                                            <input class="form-control" type="text" value={{ api_key }} style="cursor:not-allowed" disabled="disabled">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label class="col-3 col-form-label">API
+                                                                            secrets</label>
+                                        <div class="col-6">
+                                            <input class="form-control" type="text" value={{ api_secret }} style="cursor:not-allowed" disabled="disabled">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </fieldset>
+                            <center>
+                                <button type="submit" class="btn btn-success">Save
+                                                                              Changes
+                                </button>
+                            </center>
+                        </form>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

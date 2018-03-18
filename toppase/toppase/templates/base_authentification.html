@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block style %}
+
+    <link href='{% static "css/simple-line-icons.css" %}' rel="stylesheet">
+    <link href='{% static "css/style.css" %}' rel="stylesheet">
+{% endblock %}
+
+
+{% block body_classes %}
+    class= "app flex-row align-items-center"
+{% endblock %}
+
+{% block content %}
+    {% block auth_main %}
+        {% endblock %}
+{% endblock %}
+
+{% block script %}
+
+    <script src='{% static "JavaScript/bower_components/jquery/dist/jquery.min.js" %}'></script>
+    <script src='{% static "JavaScript/bower_components/tether/dist/js/tether.min.js" %}'></script>
+    <script src='{% static "JavaScript/bower_components/bootstrap/dist/js/bootstrap.min.js" %}'></script>
+
+{% endblock %}

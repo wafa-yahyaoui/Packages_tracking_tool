@@ -1,0 +1,47 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    My Profile
+{% endblock %}
+
+
+{% block main %}
+
+
+
+    <div class="main">
+
+        {% include 'messages_notifications.html' %}
+
+        <h3 style="margin:1rem;margin-left:3rem;">
+            Account Settings
+        </h3>
+
+
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item">
+                <a {% block profile-class %}{% endblock %}  {% block profile-url %}{% endblock %}>User</a>
+            </li>
+            <li class="nav-item">
+                <a   {% block notification-settings-class %}{% endblock %}
+                {% block notification-settings-url %}{% endblock %}>Notifications</a>
+            </li>
+        </ul>
+
+        <div  class="tabcontent">
+            {% block template_to_include %}
+                {% endblock %}
+
+        </div>
+
+
+
+    </div>
+
+{% endblock %}
+
+{% block extra_script_links %}
+    <script src='{% static "JavaScript/account.js" %}'></script>
+{% endblock %}
+

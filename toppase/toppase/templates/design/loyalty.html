@@ -1,0 +1,50 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Create Template
+{% endblock %}
+{% block extra_style_links %}
+    <link rel="stylesheet" href='{% static "css/bootstrap-colorpicker.min.css" %}'>
+{% endblock %}
+
+{% block body_classes %}
+    class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden"
+{% endblock %}
+{% block main %}
+    <main class="main">
+        <h3 style="margin:1rem;margin-left:3rem;">
+            Loyalty and Engagement
+        </h3>
+        <br>
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-md-9">
+
+                    <nav class="nav nav-tabs justify-content-center">
+                        <a {% block loyalty-email-class %}{% endblock %} href='{% url "create_templates_email" %}'>Email</a>
+                        <a {% block loyalty-landing-page-class %}{% endblock %} href='{% url "create_templates_landing_page" %}' >Landing Page</a>
+                        <a {% block loyalty-trigger-class %}{% endblock %}  href='{% url "create_templates_trigger" %}'>Trigger</a>
+                    </nav>
+                </div>
+            </div>
+
+
+            <div  class="tabcontent">
+                {% block template_to_include %}{% endblock %}
+
+            </div>
+
+
+        </div>
+    </main>
+
+{% endblock %}
+
+{% block extra_script_links %}
+    <script src='{% static "JavaScript/loyalty.js" %}'></script>
+    <script src='{% static "JavaScript/bootstrap-colorpicker.min.js" %}'></script>
+{% endblock %}
+
+

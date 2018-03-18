@@ -1,0 +1,77 @@
+{% extends "base_authentification.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Signin
+{% endblock %}
+{% block extra_style_links %}
+
+{% endblock %}
+
+
+
+
+
+{% block auth_main %}
+
+    <!-- **************************************** -->
+
+
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mx-4">
+                    <div class="card-block p-4">
+                        {% if form.errors %}
+                            <p>Your username and password didn't match. Please try again.</p>
+                        {% endif %}
+
+                        {% if next %}
+                            {% if user.is_authenticated %}
+                                <p>Your account doesn't have access to this page. To proceed, please login with an
+                                   account that has access.</p>
+                            {% else %}
+                                <p>Please login to see this page.</p>
+                            {% endif %}
+                        {% endif %}
+
+                        <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <center>
+                                <img src='{% static "img/profil.png" %}'
+                                     class="avatar avatar-lg img-avatar img-fluid" alt="Profile image">
+
+                                <p class="text-muted">Login to your Toppase account</p>
+                            </center>
+                            <div class="input-group mb-3">
+                            <span class="input-group-addon"><i class="icon-user"></i>
+                            </span> <input type="text" class="form-control" placeholder="Username" name="username">
+                            </div>
+
+
+                            <div class="input-group mb-3">
+                            <span class="input-group-addon"><i class="icon-lock"></i>
+                            </span> <input type="password" class="form-control" placeholder="Password" name="password">
+                            </div>
+
+
+                            <button type="submit" class="btn btn-block btn-success" value="login">Login</button>
+                            <input type="hidden" name="next" value="{{ next }}"/>
+
+                            <center>
+{#                                <a href='{% url 'reset-password-client' %}'>#}
+                                    <button type="button" class="btn btn-link px-0"> Lost password?</button>
+                                </a>
+                            </center>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,68 @@
+{% extends 'design/base.html' %}
+
+    {% load i18n %}
+    {% load static %}
+    {% load tz %}
+    {% load bootstrap3 %}
+    {# Load CSS and JavaScript #}
+    {% bootstrap_javascript %}
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+{% block title %} {% trans "E-mails' list" %} {% endblock %}
+
+{% block menu4 %}  <li class="current_page_item"><a href="{% url "Design:liste_mails" %}"  title="">{% trans "E-mails' List" %}</a></li>{% endblock %}
+
+{% block content %}
+
+<table id ="My_Table" class="w3-table">
+    <tr>
+        <th>{% trans "Receiver" %}</th>
+        <th>{% trans "Subject" %}</th>
+        <th>{% trans "Sending time" %}</th>
+        <th>{% trans "Status" %}</th>
+    </tr>
+
+    {% for item in mails %}
+    <tr>
+        <td>{{ item.receiver }}</td>
+        <td>{{ item.mass_mail }}</td>
+        <td>{{ item.mass_mail.sent_time | localtime}}</td>
+        <td>{{ item.status }}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+<link href="{% static "css/listeMails.css" %}" rel="stylesheet" type="text/css" media="all" />
+
+<div>
+    {% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+    {% endif %}
+</div>
+
+ <script type="text/javascript"  src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+ <script src="{% static "js/listeMails.js"  %}"></script>
+
+
+{% endblock %}

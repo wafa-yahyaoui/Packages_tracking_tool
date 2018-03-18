@@ -1,0 +1,18 @@
+{% extends "design/loyalty.html" %}
+{% load staticfiles %}
+{% block template_to_include %}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    {% include "design/landing_page.html" %}
+{% endblock %}
+{% block loyalty-trigger-class %}
+   class= "nav-link "
+{% endblock %}
+
+{% block loyalty-landing-page-class %}
+   class= "nav-link active"
+{% endblock %}
+
+{% block loyalty-email-class %}
+   class= "nav-link"
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends "accounts/profile.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    My Profile
+{% endblock %}
+
+{% block template_to_include %}
+    {% include "accounts/notifications.html" %}
+{% endblock %}
+{% block profile-class %}
+    class="nav-link"
+{% endblock %}
+{% block profile-url %}
+    href='{% url "profile" %}'
+{% endblock %}
+{% block notification-settings-class%}
+    class="nav-link active"
+{% endblock %}
+{% block notification-settings-url %}
+    href="#"
+{% endblock %}

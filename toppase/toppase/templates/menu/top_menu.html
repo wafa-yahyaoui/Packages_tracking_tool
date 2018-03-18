@@ -1,0 +1,78 @@
+{% load staticfiles %}
+<div id="header">
+
+<header class="app-header navbar">
+    <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button">☰</button>
+    <a class="navbar-brand" href="#"></a>
+    <ul class="nav navbar-nav d-md-down-none">
+        <li class="nav-item">
+            <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
+        </li>
+    </ul>
+    <ul class="nav navbar-nav d-md-down-none" style="padding-left:17rem;">
+
+        <li class="nav-item px-4">
+                <form>
+                    <div class="input-group">
+
+                        <input type="text" id="input1-group2" name="input1-group2" class="form-control" placeholder="Search" style="width: 263px;">
+                        <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary"><i class="icon-magnifier"></i> </button>
+                    </span>
+                    </div>
+                </form>
+        </li>
+
+    </ul>
+    <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item dropdown d-md-down-none">
+            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="height: 10px;">
+                <i class="icon-bell"></i>
+                <span class="badge badge-pill badge-danger">5</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+
+                <div class="dropdown-header text-center">
+                    <strong>You have 5 notifications</strong>
+                </div>
+
+                <a href="#" class="dropdown-item">
+                    <i class="icon-user-follow text-success"></i> New user registered
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="icon-user-unfollow text-danger"></i> User deleted
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="icon-chart text-info"></i> Sales report is ready
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="icon-basket-loaded text-primary"></i> New client
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="icon-speedometer text-warning"></i> Server overloaded
+                </a>
+
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <img src='{% static "img/profil.png" %}' class="avatar avatar-xs" alt="">
+                <span class="d-md-down-none">{{ request.user.first_name }} {{ request.user.last_name }}</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header text-center">
+                    <strong>Settings</strong>
+                </div>
+
+                <a class="dropdown-item" href='{% url "profile" %}'><i class="fa fa-user"></i> Account Settings</a>
+                <a class="dropdown-item" href="#"><i class="fa fa-usd"></i> Feedback</a>
+                <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Billings</a>
+                <div class="divider"></div>
+                <a class="dropdown-item" href='{% url "logout" %}'><i class="fa fa-lock"></i> Logout</a>
+            </div>
+        </li>
+        <li class="nav-item">
+        </li>
+
+    </ul>
+</header></div>

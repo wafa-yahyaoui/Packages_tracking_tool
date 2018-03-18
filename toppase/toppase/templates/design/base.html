@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+<html>
+
+    {% load i18n %}
+    {% load static %}
+
+    {% load bootstrap3 %}
+    {# Load CSS and JavaScript #}
+    {% bootstrap_javascript %}
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+
+
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="{%  static "css/default.css" %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static "css/createTemplates.css" %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static "css/fonts.css" %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static "css/bootstrap-iso.css" %}" rel="stylesheet" type="text/css" media="all" />
+
+ <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+<!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+
+    <title> {% block title %} {% endblock %}</title>
+
+
+</head>
+
+
+{#<body>#}
+{##}
+{##}
+{##}
+{#<div id="page" class="container">#}
+{##}
+{#	<div id="header">#}
+{#		<div id="logo">#}
+{#            {% if user.is_authenticated %}#}
+{#			<h1>#}
+{#                <a href="#"> {% trans "Welcome" %}  {{ user.username }}</a>#}
+{#            </h1>#}
+{#            {% endif %}#}
+{##}
+{##}
+{#		</div>#}
+{#		<div id="menu">#}
+{#			<ul class="nav">#}
+{#             {% block menu1 %}   <li><a href="{% url "Design:create_templates" %}"  title="">{% trans "Templates' Configuration" %}</a></li>{% endblock %}#}
+{#             {% block menu2 %}	<li ><a href="{% url "Design:send_mails" %}" accesskey="1" title="">{% trans "E-mails' Sending" %}</a></li> {% endblock %}#}
+{#             {% block menu3 %}  <li><a href="{% url "Design:statistics" %}"  title="">{% trans "Statistics" %}</a></li>{% endblock %}#}
+{#             {% block menu4 %}  <li><a href="{% url "Design:liste_mails" %}"  title="">{% trans "E-mails' List" %}</a></li>{% endblock %}#}
+{##}
+{#            </ul>#}
+{#		</div>#}
+{#	</div>#}
+{##}
+{##}
+{#	<div id="main">#}
+{##}
+{#    <div>  {% block content  %} {% endblock %}</div>#}
+{##}
+{#     <div id="copyright">#}
+{#			<span>&copy;{% trans "SysPro. All rights reserved." %} </span>#}
+{#		</div>#}
+{##}
+{##}
+{#	</div>#}
+{#</div>#}
+{##}
+
+</body>
+
+
+</html>

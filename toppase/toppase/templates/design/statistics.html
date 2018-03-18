@@ -1,0 +1,61 @@
+{% extends 'design/base.html' %}
+
+    {% load static %}
+    {% load i18n %}
+    {% load bootstrap3 %}
+    {# Load CSS and JavaScript #}
+    {% bootstrap_javascript %}
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+
+{% block title %}{% trans "Statistics" %}{% endblock %}
+
+{% block menu3 %}  <li class="current_page_item"><a href="{% url "Design:statistics" %}"  title="">{% trans "Statistics" %}</a></li>{% endblock %}
+
+{% block content %}
+
+<h4> {% trans "Your Statistics for the last 30 days:" %} </h4>
+
+<div id="container_pourcentage">
+
+    <div>
+    <h3 class="status">{% trans "Delivered" %}</h3>
+    <h2>{{ delivered }}</h2>
+    </div>
+
+    <div>
+    <h3 class="status">{% trans "Bounced" %}</h3>
+    <h2>{{ bounced }}</h2>
+    </div>
+
+    <div>
+    <h3 class="status">{% trans "Clicked" %}</h3>
+     <h2>{{ clicked }}</h2>
+    </div>
+
+    <div>
+    <h3 class="status">{% trans "Opened" %}</h3>
+    <h2>{{ opened }}</h2>
+    </div>
+
+</div>
+
+<h4>{% trans "Your activity's monthly evolution:" %}</h4>
+
+    <script>
+    var axis_list = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var opened_list = {{ opened_list }};
+    var clicked_list = {{ clicked_list }};
+    var delivered_list = {{ delivered_list }};
+    var bounced_list = {{ bounced_list }};
+    </script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<link href="{% static "css/statistics.css" %}" rel="stylesheet" type="text/css" media="all" />
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="{% static "js/statistics.js" %}"></script>
+{% endblock %}

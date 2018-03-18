@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+
+<html>
+    <head>
+        <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
+        <title>{% trans "Connexion" %}</title>
+
+
+      <link rel="stylesheet" href="{% static "css/style.css"  %}">
+
+
+    </head>
+
+
+    <body>
+ <hgroup>
+  <h1>{% trans "Connexion" %} </h1>
+</hgroup>
+
+ <form id="login_form" method="post" role="form" action="{% url "Design:user_login" %}">
+            {% csrf_token %}
+
+{{ form }}
+
+
+  <button type="submit" class="button buttonBlue">{% trans "Log in" %}
+    <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
+  </button>
+
+</form>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+    <script src="{% static "js/index.js"  %}"></script>
+
+
+    </body>
+</html>

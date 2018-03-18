@@ -1,0 +1,118 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    My Profile
+{% endblock %}
+{% block style %}
+
+
+{% endblock %}
+
+{% block body_classes %}
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mx-10">
+                    <div class="card-block p-4">
+
+
+
+
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <fieldset>
+                                <legend>Notifications Prefrences</legend>
+                                <p style="margin-bottom:30px;">Check the
+                                                               notifications you would like to receive</p>
+
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input"
+                                               type="checkbox" value="system"> <B>System
+                                                                                  Notifications</B>
+                                    </label>
+                                </div>
+                                <p style="color: #9a9898; margin-left: 25px">Get notifications when changes occur to your
+                                                                             Account</p>
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        {{ form_notifications.via_email }}<B>Email
+                                                                             Notifications</B>
+                                    </label>
+                                    {% if form_notifications.via_email.errors %}
+                                        {% for error in form_notifications.via_email.errors %}
+                                            <div class="alert alert-danger" role="alert">
+                                                <strong>{{ error }}</strong>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+
+                                </div>
+                                <p style="color: #9a9898; margin-left: 25px">Receive Notifications when the status order
+                                                                             changes:</p>
+
+                                <div class="center-block" style="margin-left: 25px; color: #9a9898;">
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label">
+                                            {#                                            {{ form_notifications.status_deliveries }}#}
+                                            <select name="status_deliveries"  multiple="multiple" class="form-check-input" id="id_status_deliveries">
+                                                <option value="1" selected="">in transit</option>
+
+                                            </select>
+                                        </label>
+                                        {% if form_notifications.status_deliveries.errors %}
+                                            {% for error in form_notifications.status_deliveries.errors %}
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>{{ error }}</strong>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        {{ form_notifications.news_letter }}<B>NewsLetter</B>
+                                    </label>
+                                    {% if form_notifications.news_letter.errors %}
+                                        {% for error in form_notifications.news_letter.errors %}
+                                            <div class="alert alert-danger" role="alert">
+                                                <strong>{{ error }}</strong>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <p style="color: #9a9898; margin-left: 25px">Get updates on feautures activated on your
+                                                                             account </p>
+
+
+                            </fieldset>
+                            <center>
+                                <button type="submit" class="btn btn-success">Save Changes</button>
+                            </center>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}
+

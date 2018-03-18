@@ -1,0 +1,157 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Store
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mx-10">
+                    <div class="card-block p-4">
+
+
+                        <form action="" method="post" id="StoreDesignFormID" name="StoreDesignFormName">
+                            {% csrf_token %}
+                            <fieldset>
+                                <legend>Design</legend>
+                                <p>You probably do not need to modify these settings. If you'd like to change the
+                                   default font in your template, choose the font that is closest to your website.</p>
+                                <div class="form-group">
+
+
+                                    <div class="form-group row">
+                                        <label class="col-3 col-form-label">Logo</label>
+                                        <div class="col-4">
+                                            <label class="custom-file"> <input type="file" id="file_logo"
+                                                                               class="custom-file-input" name="logo">
+                                                <span id="logo_name"
+                                                      class="custom-file-control"></span> </label>
+                                        </div>
+                                        <label class="col-2 col-form-label">Logo:</label>
+                                        <div style="width:150px;">
+                                            <img id="logo" style="width:100%;"
+                                                 src="" alt="logo">
+                                        </div>
+                                    </div>
+                                    <strong>Menu Font & Color</strong>
+                                    <div class="form-group row">
+                                        <label for="example-text-input"
+                                               class="col-3 col-form-label">Font Family</label>
+                                        <div class="col-6">
+                                            <select class="form-control" name="font" id="font">
+                                                <option  value="AR">Arial</option>
+                                                <option value="ARB">Arial Black</option>
+                                                <option value="CN">Courier New</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+
+                                        <label class="col-3 col-form-label">Color Menu</label>
+                                        <div class="col-6">
+                                            <div id="cp2" class="input-group colorpicker-component">
+                                                <input type="text" value="#00AABB" class="form-control" id="color_menu"
+                                                       name="color_menu"/> <span
+                                                    class="input-group-addon"><i></i></span>
+                                            </div>
+                                            <script>
+                                                $(function () {
+                                                    $('#cp2').colorpicker();
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+
+                                        <label class="col-3 col-form-label">Color Text</label>
+                                        <div class="col-6">
+                                            <div id="cp3" class="input-group colorpicker-component">
+                                                <input type="text" value="#00AA00" class="form-control"
+                                                       name="color_text" id="color_text"/> <span
+                                                    class="input-group-addon"><i></i></span>
+                                            </div>
+                                            <script>
+                                                $(function () {
+                                                    $('#cp3').colorpicker();
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+
+
+                                    <strong>Web Links</strong>
+                                    <div class="web"></div>
+
+                                    </div>
+
+                                    <button id="add_web_links" type="button"
+                                            class="btn btn-link px-0">add web links
+                                    </button>
+
+                                    <br> <strong>Social Links</strong>
+                                    <span> to add later (need to add a social link model)</span>
+
+{#                                    <div class="social"></div>#}
+{#                                    <div class="form-group row social">#}
+{##}
+{#                                        <div class="col-2">#}
+{#                                            <select class="form-control">#}
+{#                                                <option selected>Twitter</option>#}
+{#                                                <option value="1">Facebook</option>#}
+{#                                                <option value="2">LinkenIn</option>#}
+{#                                            </select>#}
+{#                                        </div>#}
+{##}
+{##}
+{#                                        <label class="col-1 col-form-label">Text</label>#}
+{#                                        <div class="col-2">#}
+{#                                            <input class="form-control" type="text">#}
+{#                                        </div>#}
+{##}
+{##}
+{#                                        <label class="col-1 col-form-label">URL</label>#}
+{#                                        <div class="col-4">#}
+{#                                            <input class="form-control" type="url">#}
+{#                                        </div>#}
+{##}
+{#                                        <div class="col-1">#}
+{#                                            <button type="button" class="close"#}
+{#                                                    aria-label="Close">#}
+{#                                                <span aria-hidden="true">&times;</span>#}
+{#                                            </button>#}
+{#                                        </div>#}
+{##}
+{#                                    </div>#}
+{##}
+{##}
+{#                                    <button id="add_social_links" type="button"#}
+{#                                            class="btn btn-link px-0">add social links#}
+{#                                    </button>#}
+
+
+{#                                </div>#}
+                            </fieldset>
+
+                            <center>
+                                <button type="submit" class="btn btn-success">Save Changes
+                                </button>
+                            </center>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

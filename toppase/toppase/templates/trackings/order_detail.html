@@ -1,0 +1,346 @@
+{% extends "business_plateforme.html" %}
+{% load staticfiles %}
+
+{% block title %}
+    Order Detail
+{% endblock %}
+
+{% block extra_style_links %}
+    <link href='{% static "css/progressBar.css" %}' rel="stylesheet">
+
+{% endblock %}
+
+{% block body_classes %}
+    class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden"
+{% endblock %}
+{% block main %}
+    <main class="main">
+
+
+        <h3 style="margin:1rem;margin-left:3rem;">
+            Detail Shipment
+        </h3>
+
+
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card mx-10">
+                        <div class="card-block p-4">
+
+
+                            <div class="row" style="margin-top:5px;">
+                                <div class="col-8">
+
+                                </div>
+                                <!--/.col-->
+                                <div class="col-4">
+                                    <button id="refresh_button" type="button" class="btn btn-secondary">Refresh Status
+                                    </button>
+
+                                    <button id="print_button" type="button" class="btn btn-primary">Print Page</button>
+
+                                </div>
+                                <!--/.col-->
+                            </div>
+
+                            <form method="PUT" action="#"  name="OrderDetailFormName" id="OrderDetailFormID">
+                                {% csrf_token %}
+
+                                <div id="printable_area" class="row" style="margin-top:2rem;">
+
+                                    <div class="col">
+
+
+                                        <div class="alert alert-info" role="alert">
+                                            <strong>Status Refreshed!</strong>
+                                        </div>
+
+
+                                        <div id="refresh_area">
+                                            <center><h2>Delivered</h2></center>
+
+{#                                        **********************************************#}
+                                        <div  id="refresh_area" >
+
+<div class="wrapper" style="background:white;">
+<ul class="StepProgress">
+
+<ul class="internal">
+<li class="Date"><strong>Mon, 02, 2017 </strong>09:42 pm
+</li>
+  <li class="StepProgress-item is-done"><strong>Delivered</strong>
+    LOSANGELOUS, CA, US
+  </li>
+  </ul>
+
+<ul class="internal">
+  <li class="Date"><strong>Mon, 02, 2017 </strong> 09:42 pm
+</li>
+  <li class="StepProgress-item is-done"><strong>Out for delivery</strong>
+       LOSANGELOUS, CA, US
+  </li>
+  </ul>
+
+
+ <ul class="internal">
+  <li class="Date"><strong>Mon, 02, 2017 </strong>09:42 pm
+</li>
+  <li class="StepProgress-item current"><strong>Departure Scan</strong>
+        LOSANGELOUS, CA, US
+  </li>
+  </ul>
+
+
+   <ul class="internal">
+  <li class="Date"><strong>Mon, 02, 2017 </strong>09:42 pm
+</li>
+  <li class="StepProgress-item"><strong>Arrival Scan</strong>
+        LOSANGELOUS, CA, US
+  </li>
+  </ul>
+
+
+</ul>
+</div>
+
+</div>
+
+{#                                        **********************************************#}
+
+
+{#                                            <div class="wrapper" style="background:white;">#}
+{#                                                <ul class="StepProgress">#}
+{##}
+{#                                                    {% for obj in order_history %}#}
+{##}
+{#                                                    <ul class="internal">#}
+{#                                                        <li class="Date"><strong>{{ obj.date }} </strong>#}
+{#                                                        </li>#}
+{#                                                        {% if obj.status == 'Delivered' %}#}
+{#                                                        <li class="StepProgress-item is-done"><strong>{{ obj.status }}</strong>#}
+{#                                                            {{ obj.location }}#}
+{#                                                        </li>#}
+{#                                                    {% elif obj.status == 'In transit' %}#}
+{#                                                    <li class="StepProgress-item current"><strong>{{ obj.status }}</strong>#}
+{#                                                            {{ obj.location }}#}
+{#                                                        </li>#}
+{#                                                    {% else %}#}
+{#                                                    <li class="StepProgress-item"><strong>{{ obj.status }}</strong>#}
+{#                                                            {{ obj.location }}#}
+{#                                                        </li>#}
+{#                                                    {% endif %}#}
+{##}
+{#                                                    </ul>#}
+{##}
+{#                                                    {% endfor %}#}
+{##}
+{##}
+{#                                                </ul>#}
+{#                                            </div>#}
+
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label>Note</label> <textarea rows="8" cols="5"
+                                                                          class="form-control" name="note" id="order_note"></textarea>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Reason</label> <textarea rows="8" cols="5"
+                                                                            class="form-control" name="reason" id="order_reason"></textarea>
+                                        </div>
+
+
+
+                                        <div class="form-group row">
+                                            <label class="col-3 col-form-label">Products</label>
+                                            <div class="col-9">
+                                                <select name="products" required="" multiple="multiple" class="form-control" id="order_products" style="cursor:not-allowed" disabled="disabled">
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+                                    <div class="col">
+
+
+                                        <div class="form-group">
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Order Id</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="id" style="cursor:not-allowed" disabled="disabled" id="order_id">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Tracking ID</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="tracking_id"  id="order_tracking_id">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Origin</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="origin" id="order_origin">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Destination</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="destination" id="order_destination">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Courier</label>
+                                                <div class="col-9">
+                                                    <select name="couriers" required=""  class="form-control" id="order_courier" style="cursor:not-allowed" disabled="disabled">
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+
+
+
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Date Created</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="date_created" style="cursor:not-allowed" disabled="disabled" id="order_date_created">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label" style="cursor:not-allowed" disabled="disabled">Customer Email</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="email" name="client.email" id="order_client_email">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Customer First Name</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="client.first_name" id="order_client_first_name">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Customer Last Name</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="client.last_name" id="order_client_last_name">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Customer Phone</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="phone" name="client.phone" id="order_client_phone">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Customer County</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="client.country" id="order_client_country">
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Customer City</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="phone" name="client.city" id="order_client_city">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Customer Zip Code</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="phone" name="client.zip_code" id="order_client_zip_code">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Customer Address Line </label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="client.address_line" id="order_client_address_line">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Customer Ip Address </label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="text" name="client.ip_address" id="order_client_ip_address">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="col-3 col-form-label">Rate</label>
+                                                <div class="col-9">
+                                                    <input class="form-control" type="number" name="rate" id="order_rate">
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top:5px;">
+                                    <div class="col-10">
+
+                                    </div>
+                                    <!--/.col-->
+                                    <div class="col-2">
+                                        <button type="submit" class="btn btn-success">Save Edit</button>
+
+                                    </div>
+                                    <!--/.col-->
+                                </div>
+
+                            </form>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+{% endblock %}
+
+
+{% block extra_script_links %}
+    {#    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>#}
+    <script src='{% static "JavaScript/jQuery.print/jQuery.print.js" %}'></script>
+    <script src='{% static "JavaScript/order_detail.js" %}'></script>
+
+
+{% endblock %}
+
