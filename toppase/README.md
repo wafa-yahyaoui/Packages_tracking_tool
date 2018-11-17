@@ -1,29 +1,7 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+Through this project, named TOPPASE, Syspro aims at generating a “business to business“ solution to e-commerce business owner by creating an SaaS that provides product tracking facilities. 
+Once an order is made our SaaS product provides tracking facilities to the e-commerce company and also to the final user through informative emails.
+Therefore, the main purpose of our project is to provide efficient and methodical features for both the e-merchant and the e-commerce client.
+• Keywords: Django, Django REST framework, Celery, RabbitMQ, PostgreSQL,
+AJAX, Jquery ...
