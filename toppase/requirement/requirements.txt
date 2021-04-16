@@ -21,7 +21,7 @@ django-celery-beat==1.0.1
 django-celery-results==1.0.1
 django-ckeditor==5.2.2
 django-colorful==1.2
-django-debug-toolbar==1.8
+django-debug-toolbar==1.11.1
 django-extensions==1.8.1
 django-grappelli==2.10.1
 django-image-cropping==1.0.4
