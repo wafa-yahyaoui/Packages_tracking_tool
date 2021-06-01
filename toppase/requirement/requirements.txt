@@ -76,6 +76,6 @@ traitlets==4.3.2
 typing==3.6.1
 -e git://github.com/jdunck/python-unicodecsv.git@de3b59bb18032aa75681dc4068b92b4023e9d56d#egg=unicodecsv
 Unidecode==0.4.21
-urllib3==1.21.1
+urllib3==1.26.5
 vine==1.1.4
 wcwidth==0.1.7
